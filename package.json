@@ -63,5 +63,8 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "haikunator": "^2.1.2"
   }
 }
