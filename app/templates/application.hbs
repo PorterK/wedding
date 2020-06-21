@@ -1,11 +1,1 @@
-{{#if session.isAuthenticated}}
-  Logged in as {{session.currentUser.displayName}}
-  <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" {{ action "signOut" }}>
-    Sign Out
-  </button>
-  {{outlet}}
-{{else}}
-  <button class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" {{ action "signIn" }}>
-    Sign In
-  </button>
-{{/if}}
+{{outlet}}
