@@ -20,6 +20,20 @@ module.exports = function(environment) {
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created
+    },
+
+    firebase: {
+      apiKey: "AIzaSyCTV8HedN_X19zHM2O1eB5X2e0y7vN4Xyw",
+      authDomain: "wedding-8c31a.firebaseapp.com",
+      databaseURL: "https://wedding-8c31a.firebaseio.com",
+      projectId: "wedding-8c31a",
+      storageBucket: "wedding-8c31a.appspot.com",
+      messagingSenderId: "462651463983",
+      appId: "1:462651463983:web:56717381f84a58e8b6a9da",
+      measurementId: "G-EK5RRTCWS6"
+    },
+    torii: {
+      sessionServiceName: 'session',
     }
   };
 
