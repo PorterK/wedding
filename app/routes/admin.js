@@ -5,6 +5,8 @@ export default class AdminRoute extends Route {
   @service('session') session
 
   beforeModel() {
+    this.store.findAll('invites');
+
     return this.session.fetch().catch(() => {});
   }
 
