@@ -5,8 +5,6 @@ export default class AdminRoute extends Route {
   @service('session') session
 
   async beforeModel() {
-    this.store.findAll('invites');
-
     await this.session.fetch();
 
     if (!this.session.get('isAuthenticated')) {

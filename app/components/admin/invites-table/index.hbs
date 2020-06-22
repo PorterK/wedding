@@ -13,28 +13,35 @@
     </div>
   </div>
 
-  <div class="flex w-full justify-center">
-    {{#if this.invites.length}}
-      <table class="table-auto">
-        <thead>
-          <tr>
-            <th class="px-4 py-2">People</th>
-            <th class="px-4 py-2">Code</th>
-            <th class="px-4 py-2">Accepted</th>
-          </tr>
-        </thead>
-        <tbody>
-          {{#each this.invites as |invite|}}
-            <tr>
-              <td class="border px-4 py-2">{{{invite.people}}}</td>
-              <td class="border px-4 py-2">{{{invite.code}}}</td>
-              <td class="border px-4 py-2">{{{invite.rsvpAccepted}}}</td>
-            </tr>
-          {{/each}}
-        </tbody>
-      </table>
-    {{else}}
-      No invites found...
-    {{/if}}
-  </div>
+  <Await @promise={{this.getInvites}} as |await|>
+    <div class="flex w-full justify-center">
+      <await.Pending>
+        Loading...
+      </await.Pending>
+      <await.Fulfilled as |invites|>
+        {{#if invites.length}}
+          <table class="table-auto">
+            <thead>
+              <tr>
+                <th class="px-4 py-2">People</th>
+                <th class="px-4 py-2">Code</th>
+                <th class="px-4 py-2">Accepted</th>
+              </tr>
+            </thead>
+            <tbody>
+              {{#each invites as |invite|}}
+                <tr>
+                  <td class="border px-4 py-2">{{{invite.people}}}</td>
+                  <td class="border px-4 py-2">{{{invite.code}}}</td>
+                  <td class="border px-4 py-2">{{{invite.rsvpAccepted}}}</td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        {{else}}
+          No invites found...
+        {{/if}}
+      </await.Fulfilled>
+    </div>
+  </Await>
 </div>
