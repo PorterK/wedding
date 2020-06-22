@@ -4,13 +4,13 @@ import { inject as service } from '@ember/service';
 export default class AdminRoute extends Route {
   @service('session') session
 
-  beforeModel() {
+  async beforeModel() {
     this.store.findAll('invites');
 
-    return this.session.fetch().catch(() => {});
-  }
+    await this.session.fetch();
 
-  model() {
-    if (!this.session.get('isAuthenticated')) this.transitionTo('login');
+    if (!this.session.get('isAuthenticated')) {
+      this.transitionTo('login');
+    }
   }
 }
