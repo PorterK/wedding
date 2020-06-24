@@ -6,7 +6,6 @@ export default class InvitesTable extends Component {
   @service('store') store;
 
   get haiku() {
-    console.log('TEST');
     const haikunator = new Haikunator({
       adjectives: [
         'happy', 'exciting', 'generous', 'gleeful',
