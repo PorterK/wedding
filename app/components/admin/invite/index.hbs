@@ -1,0 +1,146 @@
+<div class="flex ml-2 mr-2">
+  <div class="flex w-full justify-start">
+    <span class="text-4xl">
+      Edit Invite
+    </span>
+  </div>
+
+  <div class="flex w-full justify-end items-center">
+    <span class="text-lg text-gray-500">
+      {{ this.inviteCode }}
+    </span>
+  </div>
+</div>
+
+<div class="bg-gray-100 p-4 shadow-md mb-4">
+  <div class="flex">
+    <div class="flex w-full justify-start">
+      <span class="text-xl">
+        Invite Settings
+      </span>
+    </div>
+  </div>
+  <div class="flex mt-2">
+    <div class="w-full">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ml-1" for="notes">
+        Notes
+      </label>
+      <textarea
+        {{ on 'input' this.onInput }}
+        value={{this.city}}
+        name="notes"
+        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+        type="text"
+        placeholder="Alex is allergic to cheese"
+        rows="10"
+      ></textarea>
+    </div>
+  </div>
+  <div class="flex mt-2 justify-end">
+    <button class="bg-sage text-white font-bold py-2 px-4 rounded inline-flex items-center" {{ action "saveAddress" }}>
+      Save
+    </button>
+  </div>
+</div>
+
+<div class="bg-gray-100 p-4 shadow-md mb-4">
+  <div class="flex">
+    <div class="flex w-full justify-start">
+      <span class="text-xl">
+        Edit Address
+      </span>
+    </div>
+  </div>
+  <div class="flex">
+    <div class="w-full">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ml-1" for="street">
+        Street
+      </label>
+      <input
+        {{ on 'input' this.onInput }}
+        value={{this.street}}
+        name="street"
+        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+        type="text"
+        placeholder="1234 Main St"
+      >
+    </div>
+  </div>
+  <div class="flex mt-2 ">
+    <div class="w-full mr-2">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ml-1" for="city">
+        City
+      </label>
+      <input
+        {{ on 'input' this.onInput }}
+        value={{this.city}}
+        name="city"
+        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+        type="text"
+        placeholder="Indianapolis"
+      >
+    </div>
+    <div class="w-full ml-2">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ml-1" for="state">
+        State
+      </label>
+      <input
+        {{ on 'input' this.onInput }}
+        value={{this.state}}
+        name="state"
+        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+        type="text"
+        placeholder="IN"
+      >
+    </div>
+  </div>
+  <div class="flex mt-2">
+    <div class="w-full mr-2">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ml-1" for="zip">
+        Zip Code
+      </label>
+      <input
+        {{ on 'input' this.onInput }}
+        value={{this.zip}}
+        name="zip"
+        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+        type="number"
+        placeholder="46221"
+      >
+    </div>
+    <div class="w-full ml-2">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ml-1" for="to">
+        Addressed To
+      </label>
+      <input
+        {{ on 'input' this.onInput }}
+        value={{this.zip}}
+        name="to"
+        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+        type="number"
+        placeholder="The Porter Family"
+      >
+    </div>
+  </div>
+  <div class="flex mt-2 justify-end">
+    <button class="bg-sage text-white font-bold py-2 px-4 rounded inline-flex items-center" {{ action "saveAddress" }}>
+      Save
+    </button>
+  </div>
+</div>
+
+<div class="bg-gray-100 p-4 shadow-md">
+  <div class="flex">
+    <div class="flex w-full justify-start">
+      <span class="text-xl">
+        People
+      </span>
+    </div>
+
+    <div class="flex w-full justify-end">
+      <button class="bg-sage text-white font-bold py-2 px-4 rounded inline-flex items-center">
+        <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>

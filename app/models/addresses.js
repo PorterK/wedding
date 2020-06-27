@@ -7,4 +7,5 @@ export default class AddressModel extends Model {
   @attr('string') city;
   @attr('string') state;
   @attr('int') zip;
+  @attr('string') to;
 }

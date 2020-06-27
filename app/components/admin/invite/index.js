@@ -1,11 +1,23 @@
 import Component from '@glimmer/component';
+import { tracked } from '@glimmer/tracking';
+import { action } from '@ember/object';
 import { inject as service } from '@ember/service';
 import Haikunator from 'haikunator';
 
 export default class InvitesTable extends Component {
   @service('store') store;
 
-  get haiku() {
+  @tracked inviteCode;
+  @tracked name;
+  @tracked notes;
+  @tracked street;
+  @tracked city;
+  @tracked state;
+  @tracked zip;
+
+  constructor(owner, args) {
+    super(owner, args);
+
     const haikunator = new Haikunator({
       adjectives: [
         'happy', 'exciting', 'generous', 'gleeful',
@@ -28,6 +40,20 @@ export default class InvitesTable extends Component {
       }
     });
     
-    return haikunator.haikunate();
+    this.inviteCode = haikunator.haikunate();
+  }
+
+  @action
+  onInput({ target: { name, value } }) {
+    this[name] = value;
+  } 
+
+  @action
+  saveAddress() {
+  //   this.store.create('invites', {
+  //     code: this.inviteCode,
+  //     rsvpAccepted: false,
+  //     sent: false,
+  //   });
   }
  }

@@ -7,4 +7,5 @@ export default class PersonModel extends Model {
   @attr('string') lastName;
   @attr('int') phoneNumber;
   @attr('bool') attending;
+  @attr('bool') receiveUpdates;
 }
