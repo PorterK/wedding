@@ -32,9 +32,6 @@ module.exports = function(environment) {
       appId: "1:462651463983:web:56717381f84a58e8b6a9da",
       measurementId: "G-EK5RRTCWS6"
     },
-    torii: {
-      sessionServiceName: 'session',
-    }
   };
 
   if (environment === 'development') {

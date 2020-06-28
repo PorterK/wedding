@@ -23,17 +23,21 @@
           <table class="table-auto">
             <thead>
               <tr>
-                <th class="px-4 py-2">People</th>
-                <th class="px-4 py-2">Code</th>
-                <th class="px-4 py-2">Accepted</th>
+                <th class="px-4 py-2">id</th>
+                <th class="px-4 py-2">to</th>
+                <th class="px-4 py-2">code</th>
+                <th class="px-4 py-2">accepted</th>
+                <th class="px-4 py-2">edit</th>
               </tr>
             </thead>
             <tbody>
               {{#each invites as |invite|}}
                 <tr>
-                  <td class="border px-4 py-2">{{{invite.people}}}</td>
+                  <td class="border px-4 py-2">{{{invite.id}}}</td>
+                  <td class="border px-4 py-2">{{{invite.address.to}}}</td>
                   <td class="border px-4 py-2">{{{invite.code}}}</td>
                   <td class="border px-4 py-2">{{{invite.rsvpAccepted}}}</td>
+                  <td class="border px-4 py-2"><LinkTo @route="admin.invite" @model={{invite}}>Edit</LinkTo></td>
                 </tr>
               {{/each}}
             </tbody>

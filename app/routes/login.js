@@ -1,20 +1,23 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
+import * as firebase from 'firebase';
 
 export default class LoginRoute extends Route {
   @service('session') session;
-
-  beforeModel() {
-    return this.session.fetch().catch(() => {});
-  }
+  @service('firebase-app') app;
 
   @action
   async signIn() {
     try {
-      const data = await this.session.open('firebase', { provider: 'google' });
+      // const auth = t;
+      const provider = new firebase.auth.GoogleAuthProvider();
 
-      const adminQuery = await this.store.query('admins', {
+      console.log(this.app.auth());
+
+      const data = await this.app.auth().signInWithPopup(provider);
+
+      const adminQuery = await this.store.query('admin', {
         filter: {
           userId: data.uid,
         }
