@@ -23,21 +23,43 @@
           <table class="table-auto">
             <thead>
               <tr>
-                <th class="px-4 py-2">id</th>
-                <th class="px-4 py-2">to</th>
-                <th class="px-4 py-2">code</th>
-                <th class="px-4 py-2">accepted</th>
-                <th class="px-4 py-2">edit</th>
+                <th class="px-4 py-2 uppercase tracking-wide text-gray-700 text-xs font-bold">ID</th>
+                <th class="px-4 py-2 uppercase tracking-wide text-gray-700 text-xs font-bold">TO</th>
+                <th class="px-4 py-2 uppercase tracking-wide text-gray-700 text-xs font-bold">CODE</th>
+                <th class="px-4 py-2 uppercase tracking-wide text-gray-700 text-xs font-bold">ACCEPTED</th>
+                <th class="px-4 py-2 uppercase tracking-wide text-gray-700 text-xs font-bold">SENT</th>
               </tr>
             </thead>
             <tbody>
               {{#each invites as |invite|}}
                 <tr>
-                  <td class="border px-4 py-2">{{{invite.id}}}</td>
-                  <td class="border px-4 py-2">{{{invite.address.to}}}</td>
-                  <td class="border px-4 py-2">{{{invite.code}}}</td>
-                  <td class="border px-4 py-2">{{{invite.rsvpAccepted}}}</td>
-                  <td class="border px-4 py-2"><LinkTo @route="admin.invite" @model={{invite}}>Edit</LinkTo></td>
+                  <td class="border px-4 py-2 tracking-wide text-gray-700 text-xs">{{{invite.id}}}</td>
+                  <td class="border px-4 py-2 tracking-wide text-gray-700 text-xs">{{{invite.address.to}}}</td>
+                  <td class="border px-4 py-2 tracking-wide text-gray-700 text-xs">{{{invite.code}}}</td>
+                  <td class="border px-4 py-2 tracking-wide text-gray-700 text-xs">
+                    <input
+                      checked={{invite.rsvpAccepted}}
+                      name="rsvpAccepted"
+                      class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+                      type="checkbox"
+                      disabled
+                    >
+                  </td>
+                  <td class="border px-4 py-2 tracking-wide text-gray-700 text-xs">
+                    <input
+                      checked={{invite.sent}}
+                      name="sent"
+                      class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+                      type="checkbox"
+                    >
+                  </td>
+                  <td class="px-4 py-2">
+                    <LinkTo @route="admin.invite" @model={{invite}}>
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="16" height="16">
+                        <path class="heroicon-ui" d="M6.3 12.3l10-10a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1 0 1.4l-10 10a1 1 0 0 1-.7.3H7a1 1 0 0 1-1-1v-4a1 1 0 0 1 .3-.7zM8 16h2.59l9-9L17 4.41l-9 9V16zm10-2a1 1 0 0 1 2 0v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6c0-1.1.9-2 2-2h6a1 1 0 0 1 0 2H4v14h14v-6z"/>
+                      </svg>
+                    </LinkTo>
+                  </td>
                 </tr>
               {{/each}}
             </tbody>
