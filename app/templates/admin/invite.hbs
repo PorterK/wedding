@@ -1,1 +1,17 @@
-<Admin::Invite />
+<div class="flex ml-2 mr-2">
+  <div class="flex w-full justify-start">
+    <span class="text-4xl">
+      Edit Invite
+    </span>
+  </div>
+
+  <div class="flex w-full justify-end items-center">
+    <span class="text-lg text-gray-500">
+      {{ this.model.code }}
+    </span>
+  </div>
+</div>
+
+<Admin::InviteSettings @id={{this.model.id}} />
+<Admin::InviteAddress @inviteId={{this.model.id}} />
+<Admin::InvitePeople @inviteId={{this.model.id}} />

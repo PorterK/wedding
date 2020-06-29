@@ -1,0 +1,30 @@
+<div class="bg-gray-100 p-4 shadow-md mb-4">
+  <div class="flex">
+    <div class="flex w-full justify-start">
+      <span class="text-xl">
+        Invite Settings
+      </span>
+    </div>
+  </div>
+  <div class="flex mt-2">
+    <div class="w-full">
+      <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ml-1" for="notes">
+        Notes
+      </label>
+      <textarea
+        {{ on 'input' this.onInput }}
+        value={{this.invite.notes}}
+        name="notes"
+        class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+        type="text"
+        placeholder="Alex is allergic to cheese"
+        rows="10"
+      ></textarea>
+    </div>
+  </div>
+  <div class="flex mt-2 justify-end">
+    <button class="bg-sage text-white font-bold py-2 px-4 rounded inline-flex items-center" {{ action "save" }}>
+      Save
+    </button>
+  </div>
+</div>

@@ -7,5 +7,5 @@ export default class AddressModel extends Model {
   @attr('number') zip;
   @attr('string') to;
   
-  @belongsTo('invite', { async: true }) invite;
+  @belongsTo('invite') invite;
 }

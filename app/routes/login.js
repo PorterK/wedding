@@ -10,10 +10,7 @@ export default class LoginRoute extends Route {
   @action
   async signIn() {
     try {
-      // const auth = t;
       const provider = new firebase.auth.GoogleAuthProvider();
-
-      console.log(this.app.auth());
 
       const data = await this.app.auth().signInWithPopup(provider);
 
