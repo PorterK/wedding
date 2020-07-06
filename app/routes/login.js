@@ -1,26 +1,33 @@
 import Route from '@ember/routing/route';
 import { inject as service } from '@ember/service';
 import { action } from '@ember/object';
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 
 export default class LoginRoute extends Route {
   @service('session') session;
-  @service('firebase-app') app;
+  @service('store') store;
+  @service('firebaseApp') app;
 
   @action
   async signIn() {
     try {
+      const auth = await this.app.auth();
       const provider = new firebase.auth.GoogleAuthProvider();
 
-      const data = await this.app.auth().signInWithPopup(provider);
+      // Force account select when only 1 account is signed in
+      provider.setCustomParameters({
+        prompt: 'select_account',
+      });
+
+      const { user } = await auth.signInWithPopup(provider);
 
       const adminQuery = await this.store.query('admin', {
         filter: {
-          userId: data.uid,
+          userId: user.uid,
         }
       });
 
-      if (!adminQuery.content.length) this.session.close();
+      if (!adminQuery.content.length) this.session.invalidate();
     } catch (err) {
       console.error(err);
     }
