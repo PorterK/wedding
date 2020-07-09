@@ -1,15 +1,29 @@
 <div class="bg-gray-100 p-4 shadow-md">
-  <div class="flex">
-    <div class="flex w-full justify-start">
-      <span class="text-xl">
-        People
-      </span>
-    </div>
+  <Await @defer={{this.addPerson}} @promise={{this.getPeople}} as |await|>
+    <div class="flex">
+      <div class="flex w-full justify-start">
+        <span class="text-xl">
+          People
+        </span>
+      </div>
 
-    <div class="flex w-full justify-end">
-      <button class="bg-sage text-white font-bold py-2 px-4 rounded inline-flex items-center">
-        <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
-      </button>
+      <div class="flex w-full justify-end">
+        <button class="bg-sage text-white font-bold py-2 px-4 rounded inline-flex items-center" onClick={{await.run}}>
+          <svg class="fill-current w-4 h-4" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 24 24"><path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z"/></svg>
+        </button>
+      </div>
     </div>
-  </div>
+    <await.Pending>
+      Loading...
+    </await.Pending>
+    <await.Fulfilled as |people|>
+      {{#if people.length }}
+        {{#each people as |person|}}
+          <Admin::InvitePeople::Person @id={{person.id}} />
+        {{/each}}
+      {{else}}
+        No people found...
+      {{/if}}
+    </await.Fulfilled>
+  </Await>
 </div>

@@ -1,0 +1,28 @@
+<div class="flex">
+  <div class="w-1/2 p-2">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ml-1" for="street">
+      Name
+    </label>
+    <input
+      {{ on 'input' this.onInput }}
+      value={{this.name}}
+      name="street"
+      class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+      type="text"
+      placeholder="Alexander Hamilton"
+    >
+  </div>
+  <div class="w-1/2 p-2">
+    <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 ml-1" for="street">
+      Phone Number
+    </label>
+    <input
+      {{ on 'input' this.onInput }}
+      value={{this.phoneNumber}}
+      name="street"
+      class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
+      type="text"
+      placeholder="317-867-5309"
+    >
+  </div>
+</div> 
