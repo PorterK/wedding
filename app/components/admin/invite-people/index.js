@@ -8,20 +8,25 @@ export default class InvitePeople extends Component {
 
   @tracked invite;
   @tracked people;
+  @tracked loaded;
 
   constructor(owner, args) {
     super(owner, args);
 
     this.invite = this.store.peekRecord('invite', this.args.inviteId);
+    
+    this.getPeople();
   }
 
   @action
   async getPeople() {
-    return this.store.query('person', {
+    this.people = await this.store.query('person', {
       filter: {
         invite: this.invite.id,
       },
     });
+
+    this.loaded = true;
   }
 
   @action
@@ -30,8 +35,10 @@ export default class InvitePeople extends Component {
       const person = this.store.createRecord('person', { invite: this.invite });
 
       await person.save();
-    } catch (_) {}
+    } catch (_) {
+      console.log(_)
+    }
 
-    return this.getPeople();
+    await this.getPeople();
   }
 }

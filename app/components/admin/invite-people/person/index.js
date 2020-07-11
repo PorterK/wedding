@@ -11,15 +11,19 @@ export default class Person extends Component {
   constructor(owner, args) {
     super(owner, args);
 
-    this.store.findRecord('person', this.args.id)
-      .then((person) => {
-        this.person = person;
-      });
+    this.person = this.store.peekRecord('person', this.args.id)
   }
 
 
   @action
   onInput({ target: { name, value } }) {
     this.person[name] = value;
+  }
+
+  @action
+  async delete() {
+    await this.person.destroyRecord();
+
+    await this.args.reload();
   }
  }
