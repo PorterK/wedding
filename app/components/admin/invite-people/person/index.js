@@ -7,6 +7,7 @@ export default class Person extends Component {
   @service('store') store;
 
   @tracked person;
+  @tracked timeout;
 
   constructor(owner, args) {
     super(owner, args);
@@ -18,6 +19,13 @@ export default class Person extends Component {
   @action
   onInput({ target: { name, value } }) {
     this.person[name] = value;
+
+    // Debounced save
+    clearTimeout(this.timeout);
+
+    const person = this.person;
+
+    this.timeout = setTimeout(() => person.save(), 300);
   }
 
   @action

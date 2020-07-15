@@ -5,8 +5,8 @@
     </label>
     <input
       {{ on 'input' this.onInput }}
-      value={{this.name}}
-      name="street"
+      value={{this.person.name}}
+      name="name"
       class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
       type="text"
       placeholder="Alexander Hamilton"
@@ -18,8 +18,8 @@
     </label>
     <input
       {{ on 'input' this.onInput }}
-      value={{this.phoneNumber}}
-      name="street"
+      value={{this.person.phoneNumber}}
+      name="phoneNumber"
       class="bg-white focus:outline-none focus:shadow-outline border border-gray-300 rounded-lg py-2 px-4 block w-full appearance-none leading-normal"
       type="text"
       placeholder="317-867-5309"
