@@ -17,15 +17,23 @@ export default class Person extends Component {
 
 
   @action
-  onInput({ target: { name, value } }) {
-    this.person[name] = value;
+  onInput({ target }) {
+    this.person[target.name] = target.value;
 
     // Debounced save
     clearTimeout(this.timeout);
 
     const person = this.person;
 
-    this.timeout = setTimeout(() => person.save(), 300);
+    this.timeout = setTimeout(() => {
+      person.save();
+
+      target.classList.add('success-border');
+
+      setTimeout(() => {
+        target.classList.remove('success-border')
+      }, 1000);
+    }, 500);
   }
 
   @action

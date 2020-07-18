@@ -1,0 +1,7 @@
+input, textarea {
+  transition: box-shadow .5s;
+}
+
+.success-border {
+  box-shadow: 0 0 0 3px theme('colors.green.300');
+}

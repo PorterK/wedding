@@ -7,6 +7,7 @@ export default class InviteSettings extends Component {
   @service('store') store;
 
   @tracked invite;
+  @tracked timeout;
 
   constructor(owner, args) {
     super(owner, args);
@@ -15,12 +16,22 @@ export default class InviteSettings extends Component {
   }
 
   @action
-  onInput({ target: { name, value } }) {
-    this.invite[name] = value;
-  } 
+  onInput({ target }) {
+    this.invite[target.name] = target.value;
 
-  @action
-  async save() {
-    await this.invite.save();
+    // Debounced save
+    clearTimeout(this.timeout);
+
+    const invite = this.invite;
+
+    this.timeout = setTimeout(() => {
+      invite.save();
+
+      target.classList.add('success-border');
+
+      setTimeout(() => {
+        target.classList.remove('success-border')
+      }, 1000);
+    }, 500);
   }
  }

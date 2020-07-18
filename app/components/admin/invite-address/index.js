@@ -8,6 +8,7 @@ export default class InviteAddress extends Component {
 
   @tracked address;
   @tracked invite;
+  @tracked timeout;
 
   constructor(owner, args) {
     super(owner, args);
@@ -24,8 +25,23 @@ export default class InviteAddress extends Component {
   }
 
   @action
-  onInput({ target: { name, value } }) {
-    this.address[name] = value;
+  onInput({ target }) {
+    this.address[target.name] = target.value;
+
+    // Debounced save
+    clearTimeout(this.timeout);
+
+    const save = this.save;
+
+    this.timeout = setTimeout(() => {
+      save();
+
+      target.classList.add('success-border');
+
+      setTimeout(() => {
+        target.classList.remove('success-border')
+      }, 1000);
+    }, 500);
   } 
 
   @action
