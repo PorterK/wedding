@@ -23,14 +23,14 @@ module.exports = function(environment) {
     },
 
     firebase: {
-      apiKey: "AIzaSyCTV8HedN_X19zHM2O1eB5X2e0y7vN4Xyw",
-      authDomain: "wedding-8c31a.firebaseapp.com",
-      databaseURL: "https://wedding-8c31a.firebaseio.com",
-      projectId: "wedding-8c31a",
-      storageBucket: "wedding-8c31a.appspot.com",
-      messagingSenderId: "462651463983",
-      appId: "1:462651463983:web:56717381f84a58e8b6a9da",
-      measurementId: "G-EK5RRTCWS6"
+      apiKey: process.env.FIREBASE_API_KEY || "AIzaSyCTV8HedN_X19zHM2O1eB5X2e0y7vN4Xyw",
+      authDomain: process.env.FIREBASE_AUTH_DOMAIN || "wedding-8c31a.firebaseapp.com",
+      databaseURL: process.env.FIREBASE_DATABASE_URL || "https://wedding-8c31a.firebaseio.com",
+      projectId: process.env.FIREBASE_PROJECT_ID || "wedding-8c31a",
+      storageBucket: process.env.FIREBASE_STORAGE_BUCKET || "wedding-8c31a.appspot.com",
+      messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID || "462651463983",
+      appId: process.env.FIREBASE_APP_ID || "1:462651463983:web:56717381f84a58e8b6a9da",
+      measurementId: process.env.FIREBASE_MEASUREMENT_ID || "G-EK5RRTCWS6"
     },
   };
 
