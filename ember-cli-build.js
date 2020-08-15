@@ -20,13 +20,9 @@ module.exports = function(defaults) {
     postcssOptions: {
       compile: {
         plugins: [
-          {
-            module: require('postcss-import'),
-            options: {
-              path: ['node_modules']
-            }
-          },
+          require('postcss-import'),
           require('tailwindcss')('./app/tailwind/config.js'),
+          ...isProduction ? [purgeCSS] : []
         ]
       }
     }
