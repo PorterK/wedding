@@ -34,7 +34,7 @@ jobs:
           AWS_SECRET_ACCESS_KEY: ${{ secrets.S3_SECRET_ACCESS_KEY }}
           AWS_DEFAULT_REGION: us-east-2
       - name: invalidate cache
-        run: aws cloudfront create-invalidation --distribution-id E3CDMFD7X9EJ0M --paths /*
+        run: aws cloudfront create-invalidation --distribution-id E3CDMFD7X9EJ0M --paths "/*"
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.CLOUDFRONT_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFRONT_SECRET_ACCESS_KEY }}
