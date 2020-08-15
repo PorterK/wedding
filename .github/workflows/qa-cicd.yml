@@ -12,7 +12,7 @@ jobs:
       - name: Install ember
         uses: borales/actions-yarn@v2.0.0
         with:
-          cmd: install --global ember-cli
+          cmd: global add ember-cli
       - name: Install dependencies
         uses: borales/actions-yarn@v2.0.0
         with:
